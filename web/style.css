@@ -26,6 +26,21 @@
 	float: left;
 }
 
+.article {
+    height: 2px;
+    border: 1px solid black;
+}
+
+div .selected {
+    border: green;
+    height: 50px;
+}
+
+.article:hover {
+    height: 50px;
+    background-color: white;
+}
+
 #headers {
 	background-color: #F8F8F8;
 	width: 98px;
