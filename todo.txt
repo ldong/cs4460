@@ -1,0 +1,37 @@
+Data:
+-Add link to wikipedia for each element
+-Get edit dates in correct format: entry for each section of time(May 2003, June 2003, July 2003, ..., November 2014) for every element. AKA article 1 needs an entry for each time segment, then article 2 needs the same, etc.
+-Add entries for subcategories/articles for other categories/subcategories so the data is richer
+
+Functional:
+-Search/Filter features
+    -sort by alphabetical
+    -sort by chronological
+        -these two are only for the individual article view
+    -timeline filters
+    -search box
+-Timeline
+-Timeline control
+-Details for entry(when clicked, at bottom)
+-Get an element to 'stick' open(hovered) when clicked
+-Highlight similar items for entry(when clicked and selected at bottom, highlight 'linked' articles)
+-Add charts for edit protection
+    -Large(hovered) graph
+    -Small(non-hovered) on/off map
+
+Visual:
+-Fix color scheme so it doesn't look terrible
+-Change fonts
+-Add animations for transitions
+-Make the borders around each element not blinding
+-Make navigation look better overall
+
+Large:
+-Get actual real data to use
+-Search/Filter(see functional for details)
+-Integrate d3 more or just overall add more features so it's better
+
+Additional:
+-Google trends information
+-Comparison - ability to select specific articles, or search through the entire database of articles
+-Add all the articles
