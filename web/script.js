@@ -94,7 +94,7 @@ function updateContent() {
 					var text = "<div id='timeline'>TIMELINE</div>";
 					for(var k=0;k<csv_data.length;k++) {
 						if(csv_data[k]["Sub-Category"] == window.subFocus) {
-							text = text + "<div id='"+k+"' class='article'    style='width: 1050px; '><p>"+csv_data[k]["Title"]+"</p></div>";
+							text = text + "<div id='"+k+"' class='article'    style='width: 1048px; '><p>"+csv_data[k]["Title"]+"</p></div>";
 							/*$("#"+csv_data[k]["Title"]).hover(function() {
 							$("#"+csv_data[k]["Title"]).innerHTML = "hi";	
 							}, function() {
