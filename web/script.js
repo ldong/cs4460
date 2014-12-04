@@ -91,7 +91,7 @@ function updateContent() {
 					selectedChild[j].style.height = (670-20*elements.length)-5*(selectedChild.length-2) + 'px';
 					//Add in the items that are a part of this category now
 					var numOfElements = 0;
-					var text = "";
+					var text = "<div id='timeline'>TIMELINE</div>";
 					for(var k=0;k<csv_data.length;k++) {
 						if(csv_data[k]["Sub-Category"] == window.subFocus) {
 							text = text + "<div id='"+k+"' class='article'    style='width: 1050px; '><p>"+csv_data[k]["Title"]+"</p></div>";
