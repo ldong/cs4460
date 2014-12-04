@@ -18,6 +18,7 @@ Functional:
 -Add charts for edit protection
     -Large(hovered) graph
     -Small(non-hovered) on/off map
+-fix mouseover details for elements to show names and/or number of elements for more than just the main categories
 
 Visual:
 -Fix color scheme so it doesn't look terrible
