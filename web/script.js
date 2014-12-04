@@ -34,7 +34,7 @@ function updateContent() {
             totalNum = totalNum + csv_data_category_nums[i][1];
         }
         for (var i=0; i < csv_data_category_nums.length; i++) {
-            listingsHTML= listingsHTML + "<div id = '" + csv_data_category_nums[i][0] + "' onclick = 'updateFocus(&apos;"+csv_data_category_nums[i][0] +"&apos;)' title='Number of entries: "+ csv_data_category_nums[i][1] +"' style ='background-color:"+ colors(i) +"; width:1100px; ' >" + csv_data_category_nums[i][0] + "</div>";
+            listingsHTML= listingsHTML + "<div id = '" + csv_data_category_nums[i][0] + "' onclick = 'updateFocus(&apos;"+csv_data_category_nums[i][0] +"&apos;)' title='Number of entries: "+ csv_data_category_nums[i][1] +"' style ='position: relative; background-color:"+ colors(i) +"; width:1100px; ' >" + csv_data_category_nums[i][0] + "</div>";
             
         }
     document.getElementById("content").innerHTML = listingsHTML;
