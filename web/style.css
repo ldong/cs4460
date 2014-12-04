@@ -30,6 +30,9 @@
     height: 2px;
     border: 1px solid black;
 }
+.article p {
+    display: none
+}
 
 div .selected {
     border: green;
@@ -37,8 +40,13 @@ div .selected {
 }
 
 .article:hover {
-    height: 50px;
     background-color: white;
+    height: 50px;
+}
+
+.article:hover p{
+    display: block;
+    height: 50px;
 }
 
 #headers {

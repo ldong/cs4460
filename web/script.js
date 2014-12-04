@@ -94,7 +94,7 @@ function updateContent() {
 					var text = "";
 					for(var k=0;k<csv_data.length;k++) {
 						if(csv_data[k]["Sub-Category"] == window.subFocus) {
-							text = text + "<div id='"+k+"' class='article'  style='width: 1050px; '></div>";
+							text = text + "<div id='"+k+"' class='article'    style='width: 1050px; '><p>"+csv_data[k]["Title"]+"</p></div>";
 							/*$("#"+csv_data[k]["Title"]).hover(function() {
 							$("#"+csv_data[k]["Title"]).innerHTML = "hi";	
 							}, function() {
@@ -110,7 +110,7 @@ function updateContent() {
 					for(var z=1;z<newElements.length;z++) {
 							window.selected = newElements[z];
 							newElements[z].onclick=function() {
-							this.innerHTML="hi";
+							document.getElementById("details").innerHTML=this.getAttribute("ID");
 							this.className = "article selected";
 							};
 					}
@@ -152,7 +152,12 @@ function sortData() {
         }
     }
 }
-
+function changeContent(id, update) {
+	var e = document.getElementById(id);
+	if(id) {
+		e.innerHTML = update;
+	}
+}
 
 function updateFocus(newFocus) {
     window.currentFocus = newFocus;
