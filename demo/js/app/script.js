@@ -3,18 +3,27 @@
 //       console.log("Run");
 // });
 
-define(function(require){
+define(['papaparse'], function(Papa){
+    var file = '..';
+    console.log(Papa);
+    Papa.parse(file, {
+    	complete: function(results) {
+	    	console.log(results);
+	    }
+    });
+});
 
+function a(){
     var id = 0,
-        id1 = 1,
-        id2 = 2,
-        date = new Date(),
-        start = new Date()
-        end = new Date(),
-        title = 'title is here',
-        category = 'history',
-        subCategory = 'American history',
-        numberOfEdits = '100';
+    id1 = 1,
+    id2 = 2,
+    date = new Date(),
+    start = new Date()
+    end = new Date(),
+    title = 'title is here',
+    category = 'history',
+    subCategory = 'American history',
+    numberOfEdits = '100';
 
     var Links = require('./model/links');
     var link = new Links(id1, id2);
@@ -31,5 +40,5 @@ define(function(require){
     var Edit = require('./model/edit');
     var edit = new Edit(id, date, numberOfEdits);
     console.log(edit);
+}
 
-});

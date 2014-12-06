@@ -7,13 +7,23 @@ requirejs.config({
         'd3': 'd3',
         'underscore': 'underscore',
         'coffee-script': 'coffee-script',
-        app: '../app'
+        'papaparse': 'papaparse',
+        'app': '../app'
     },
     shim: {
         'highcharts': {
-            'exports': 'Highcharts',
-            'deps': ['jquery']
+            'deps': ['jquery'],
+            'exports': 'Highcharts'
         },
+        'jquery': {
+            'exports': '$'
+        },
+        'underscore': {
+            'exports': '_'
+        },
+        'papaparse' : {
+            'exports': 'Papa'
+        }
     }
 });
 
