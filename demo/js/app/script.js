@@ -4,12 +4,14 @@
 // });
 
 define(['papaparse'], function(Papa){
-    var file = '..';
-    console.log(Papa);
-    Papa.parse(file, {
+    // var csvString = '1,2,3';
+    // var results = Papa.parse(csvString);
+    // console.log(results.data);
+    Papa.parse("http://localhost:8080/data/article.csv", {
+    	download: true,
     	complete: function(results) {
-	    	console.log(results);
-	    }
+		console.log("Remote file parsed!", results);
+	}
     });
 });
 
