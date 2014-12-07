@@ -32,3 +32,4 @@ requirejs.config({
 // Start the main app logic
 // require(['./app/script']);
 require(['./app/highcharts']);
+require(['./app/highcharts2']);

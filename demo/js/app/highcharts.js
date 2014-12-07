@@ -1,5 +1,5 @@
 define(['jquery', 'highcharts'], function ($){
-    $('#highchart_here').highcharts({
+    $('#highchart1').highcharts({
         chart: {
             type: 'area'
         },
