@@ -5,17 +5,23 @@ define(['papaparse', 'Q', './generators/generateAll'], function(Papa, Q){
     // var map3 = require(['./app/generators/generateProtection']);
     // var map0 = require(['./app/generators/generateLinks']);
 
-    require('./app/generators/generateAll')
-    // require(['./app/generators/generateAll'])
-    // csv data are now stored in these
-    // window.links
-    // window.edits
-    // window.article
-    // window.protection
-    // console.log(window.links);
-    // console.log(window.edits);
-    // console.log(window.article);
-    // console.log(window.protection);
+    var init = require('./app/generators/generateAll');
+    /* csv data are now stored in these
+       window.links
+       window.edits
+       window.article
+       window.protection
+       console.log(window.links);
+       console.log(window.edits);
+       console.log(window.article);
+       console.log(window.protection);
+     */
+    init({
+        data: {'world': '123hello'},
+        logics: function(){
+            console.log("Whats up?");
+        }
+    }).papa();
 });
 
 function a(){
