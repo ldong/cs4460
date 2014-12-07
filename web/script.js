@@ -1,8 +1,16 @@
 //@Author Valerie Reiss
 var csv_data;
+var edit_dates_data;
 d3.csv("1.csv", function(data) {
        data.forEach(function(d) {
                     csv_data = data;
+                    });
+       }
+       );
+	   
+d3.csv("EntriesByDate.csv", function(data) {
+       data.forEach(function(d) {
+                    edit_dates_data = data;
                     });
        }
        );
@@ -16,6 +24,7 @@ window.onload = function() {
     //set the current focus of the page to none - that is, top level view. This will determine what will render.
     window.currentFocus = "none";
 	window.subFocus = "none";
+	window.currentSelectedItem = -1;
     //save the content element so we can update it as we go.
     var content = document.getElementById("content");
     //what we will update it with
@@ -110,7 +119,9 @@ function updateContent() {
 					for(var z=1;z<newElements.length;z++) {
 							window.selected = newElements[z];
 							newElements[z].onclick=function() {
-							document.getElementById("details").innerHTML=this.getAttribute("ID");
+							createGraph(this.getAttribute("ID"));
+							d3.select("#details").html = "hi";
+							window.currentSelectedItem = this.getAttribute("ID");
 							this.className = "article selected";
 							};
 					}
@@ -123,6 +134,7 @@ function updateContent() {
             }}
 			 else {
                 elements[i].style.height = '20px';
+				window.currentSelectedItem = elements[i].getAttribute('id');
                 elements[i].innerHTML = elements[i].getAttribute('id');
             }
         }
@@ -175,4 +187,65 @@ function removeAll() {
 	window.subFocus = "none";
 	window.currentFocus = "none";
 	updateContent();
+}
+
+
+function createGraph(id) {
+	var text = id;
+	
+	var margin = {top: 0, right: 0, bottom: 20, left: 10},
+		width = 1048-margin.left - margin.right,
+		height = 50 - margin.top - margin.bottom;
+		
+	var parseDate = d3.time.format("%m-%Y").parse;
+	var x = d3.time.scale()
+		.range([0,width]);
+	var y = d3.scale.linear()
+		.range([height,0]);
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left");
+	var line = d3.svg.line()
+		.x(function(d) {return x(d.Date); })
+		.y(function(d) {return y(d.Number); });
+	var svg = d3.select("#details").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	var currIdData = [];
+	d3.csv("EntriesByDate.csv", function(error, data) {
+		data.forEach(function(d) {
+		if(d.ID==id) {
+			d.Date = parseDate(d.Date);
+			d.Number = +d.Number;
+			currIdData.push(d);
+		}
+		});
+		
+		x.domain(d3.extent(currIdData, function(d) {return d.Date;}));
+		y.domain(d3.extent(currIdData, function(d) {return d.Number;}));
+		
+		svg.append("g")
+			.attr("class", "y axis")
+			.call(yAxis)
+		  .append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("y", 6)
+			.attr("dy", ".71em")
+			.style("text-anchor", "end")
+			.text("Edits");
+			
+		svg.append("path")
+			.datum(currIdData)
+			.attr("class", "line")
+			.attr("d", line);
+			
+	});
+	
+	
+	return text + "ahoetn";
 }
