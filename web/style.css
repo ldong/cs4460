@@ -34,15 +34,31 @@
 }
 
 .article {
-    height: 2px;
+    height: 1px;
     border: 1px solid black;
 }
-.article div {
-    display: none
+.article .name {
+    display: none;
+    z-index: 10;
+    position: relative;
+}
+
+.article .locks {
+    position: absolute;
+    height: 1px;
+    width: 1048px;
+    background-color: white;
+    z-index: 5;
+}
+
+.article:hover .locks {
+    height: 70px;
 }
 
 .article svg {
-    display: none
+    display: none;
+    position: relative;
+    z-index: 10;
 }
 
 .article:hover svg {
@@ -55,11 +71,10 @@ div .selected {
 }
 
 .article:hover {
-    background-color: white;
     height: 65px;
 }
 
-.article:hover div{
+.article:hover .name{
     display: block;
     height: 15px;
 }

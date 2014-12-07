@@ -259,7 +259,7 @@ function createHoverGraph(e) {
 	//var text = id;
 	//document.getElementById("details").innerHTML = "";
 	if (e.getAttribute('id') != "timeline") {
-	e.innerHTML = "<div>"+csv_data[e.getAttribute('id')]['Title']+"</div>";
+	e.innerHTML = "<div class='locks'></div><div class='name'>"+csv_data[e.getAttribute('id')]['Title']+"</div>";
 	
 	var margin = {top: 0, right: 0, bottom: 20, left: 50},
 		width = 1048-margin.left - margin.right,
