@@ -1,11 +1,9 @@
 //@Author Valerie Reiss
 var csv_data;
 d3.csv("1.csv", function(data) {
-       data.forEach(function(d) {
-                    csv_data = data;
-                    });
-       }
-       );
+		csv_data = data;
+	}
+);
 var csv_data_category_nums = [];
 //this section keeps track of the number of entreis in a category
 
@@ -28,15 +26,14 @@ function updateContent() {
     var listingsHTML = "";
     var sideHTML = "";
     //if (window.currentFocus == "none") {
-        var totalNum = 0;
-        var colors = d3.scale.category10();
-        for (var i=0; i< csv_data_category_nums.length; i++) {
-            totalNum = totalNum + csv_data_category_nums[i][1];
-        }
-        for (var i=0; i < csv_data_category_nums.length; i++) {
-            listingsHTML= listingsHTML + "<div id = '" + csv_data_category_nums[i][0] + "' onclick = 'updateFocus(&apos;"+csv_data_category_nums[i][0] +"&apos;)' title='Number of entries: "+ csv_data_category_nums[i][1] +"' style ='position: relative; background-color:"+ colors(i) +"; width:1100px; ' >" + csv_data_category_nums[i][0] + "</div>";
-            
-        }
+    var totalNum = 0;
+    var colors = d3.scale.category10();
+    for (var i=0; i< csv_data_category_nums.length; i++) {
+        totalNum = totalNum + csv_data_category_nums[i][1];
+    }
+    for (var i=0; i < csv_data_category_nums.length; i++) {
+        listingsHTML= listingsHTML + "<div id = '" + csv_data_category_nums[i][0] + "' onclick = 'updateFocus(&apos;"+csv_data_category_nums[i][0] +"&apos;)' title='Number of entries: "+ csv_data_category_nums[i][1] +"' style ='position: relative; background-color:"+ colors(i) +"; width:1100px; ' >" + csv_data_category_nums[i][0] + "</div>";
+    }
     document.getElementById("content").innerHTML = listingsHTML;
     var e = document.getElementById("content").childNodes;
     for (var i=0; i< e.length; i++) {
@@ -47,8 +44,7 @@ function updateContent() {
         var elements = document.getElementById("content").childNodes;
 		document.getElementById("content").onclick = null;
         for (var i=0; i< elements.length; i++) {
-            if(elements[i].getAttribute('id') == window.currentFocus)
-            {
+            if(elements[i].getAttribute('id') == window.currentFocus){
                 elements[i].style.height = (670-20*elements.length)+'px';
                 //all all inner element subcategories to it:
                 //first, get all the categories
@@ -79,49 +75,48 @@ function updateContent() {
 				elements[i].innerHTML = innerListings;
 				//now fix sizing of each element:
 				if (window.subFocus == "none") {
-				
-				var selectedChild = elements[i].childNodes;
-				for (var j=1; j< selectedChild.length; j++) {
-					selectedChild[j].style.height = subCategories[j-1][1]/subcatnum*(670-20*elements.length) + 'px';
-				}
+					var selectedChild = elements[i].childNodes;
+					for (var j=1; j< selectedChild.length; j++) {
+						selectedChild[j].style.height = subCategories[j-1][1]/subcatnum*(670-20*elements.length) + 'px';
+					}
 				} else {//Now we have to check if there is a subfocus and adjust all of the elements accordingly if so
-				var selectedChild = elements[i].childNodes;
-				for (var j=1; j< selectedChild.length; j++) {
-					if(selectedChild[j].getAttribute('id') == window.subFocus) {
-					selectedChild[j].style.height = (670-20*elements.length)-5*(selectedChild.length-2) + 'px';
-					//Add in the items that are a part of this category now
-					var numOfElements = 0;
-					var text = "<div id='timeline'>TIMELINE</div>";
-					for(var k=0;k<csv_data.length;k++) {
-						if(csv_data[k]["Sub-Category"] == window.subFocus) {
-							text = text + "<div id='"+k+"' class='article'    style='width: 1048px; '><p>"+csv_data[k]["Title"]+"</p></div>";
+					var selectedChild = elements[i].childNodes;
+					for (var j=1; j< selectedChild.length; j++) {
+						if(selectedChild[j].getAttribute('id') == window.subFocus) {
+							selectedChild[j].style.height = (670-20*elements.length)-5*(selectedChild.length-2) + 'px';
+							//Add in the items that are a part of this category now
+							var numOfElements = 0;
+							var text = "<div id='timeline'>TIMELINE</div>";
+							for(var k=0;k<csv_data.length;k++) {
+								if(csv_data[k]["Sub-Category"] == window.subFocus) {
+									text = text + "<div id='"+k+"' class='article'    style='width: 1048px; '><p>"+csv_data[k]["Title"]+"</p></div>";
 							/*$("#"+csv_data[k]["Title"]).hover(function() {
 							$("#"+csv_data[k]["Title"]).innerHTML = "hi";	
 							}, function() {
 							$("#"+csv_data[k]["Title"]).innerHTML = "";
 							});*/
-							numOfElements = numOfElements + 1;
+									numOfElements = numOfElements + 1;
+								}
+							}
+							selectedChild[j].innerHTML = text;
+							//Now make it so each element will display stuff when it is hovered over.
+							selectedChild[j].onclick = null;
+							var newElements = selectedChild[j].childNodes;
+							for(var z=1;z<newElements.length;z++) {
+								window.selected = newElements[z];
+								newElements[z].onclick=function() {
+									document.getElementById("details").innerHTML=this.getAttribute("ID");
+									this.className = "article selected";
+								};
+							}
+						} else {
+							selectedChild[j].style.height = '5px';
+							selectedChild[j].innerHTML = '';
 						}
 					}
-					selectedChild[j].innerHTML = text;
-					//Now make it so each element will display stuff when it is hovered over.
-					selectedChild[j].onclick = null;
-					var newElements = selectedChild[j].childNodes;
-					for(var z=1;z<newElements.length;z++) {
-							window.selected = newElements[z];
-							newElements[z].onclick=function() {
-							document.getElementById("details").innerHTML=this.getAttribute("ID");
-							this.className = "article selected";
-							};
-					}
-					} else {
-					selectedChild[j].style.height = '5px';
-					selectedChild[j].innerHTML = '';
-				}
-				}
 				
-            }}
-			 else {
+            	}
+			} else {
                 elements[i].style.height = '20px';
                 elements[i].innerHTML = elements[i].getAttribute('id');
             }
@@ -152,6 +147,7 @@ function sortData() {
         }
     }
 }
+
 function changeContent(id, update) {
 	var e = document.getElementById(id);
 	if(id) {
@@ -164,6 +160,7 @@ function updateFocus(newFocus) {
 	//window.subFocus = "none";
     updateContent();
 }
+
 function updateSubFocus(newFocus) {
 	window.subFocus = newFocus;
 	updateContent();}
@@ -171,6 +168,7 @@ function removeSub() {
 	window.subFocus = "none";
 	updateContent();
 }
+
 function removeAll() {
 	window.subFocus = "none";
 	window.currentFocus = "none";
