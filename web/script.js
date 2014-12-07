@@ -7,9 +7,11 @@ d3.csv("1.csv", function(data) {
                     });
        }
        );
-	   
+	   var parseDate = d3.time.format("%m-%Y").parse;
 d3.csv("EntriesByDate.csv", function(data) {
+		
        data.forEach(function(d) {
+					d.Date = parseDate(d.Date);
                     edit_dates_data = data;
                     });
        }
@@ -222,7 +224,7 @@ function createGraph(id) {
 	var currIdData = [];
 		edit_dates_data.forEach(function(d) {
 		if(d.ID==id) {
-			d.Date = parseDate(d.Date);
+			d.Date = d.Date;
 			d.Number = +d.Number;
 			currIdData.push(d);
 		}
@@ -256,7 +258,62 @@ function createGraph(id) {
 function createHoverGraph(e) {
 	//var text = id;
 	//document.getElementById("details").innerHTML = "";
-	e.innerHTML = "hi";
+	if (e.getAttribute('id') != "timeline") {
+	e.innerHTML = "<div>"+csv_data[e.getAttribute('id')]['Title']+"</div>";
 	
+	var margin = {top: 0, right: 0, bottom: 20, left: 50},
+		width = 1048-margin.left - margin.right,
+		height = 50 - margin.top - margin.bottom;
+	var x = d3.time.scale()
+		.range([0,width]);
+	var y = d3.scale.linear()
+		.range([height,0]);
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.ticks(3)
+		.orient("left");
+	var line = d3.svg.line()
+		.x(function(d) {return x(d.Date); })
+		.y(function(d) {return y(d.Number); });
+	var svg = d3.select(e).append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	if(e.getAttribute("id") != "timeline") {
+	var currIdData = [];
+		edit_dates_data.forEach(function(d) {
+		if(d.ID==e.getAttribute("id")) {
+			d.Date = d.Date;
+			d.Number = +d.Number;
+			currIdData.push(d);
+		}
+		});
+	x.domain(d3.extent(currIdData, function(d) {return d.Date;}));
+	y.domain(d3.extent(currIdData, function(d) {return d.Number;}));
 	
-}
+	 svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+	
+	svg.append("g")
+			.attr("class", "y axis")
+			.call(yAxis)
+		  .append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("y", 3)
+			.attr("dy", ".5em")
+			.style("text-anchor", "end")
+			.text("Edits");
+			
+	svg.append("path")
+			.datum(currIdData)
+			.attr("class", "line")
+			.attr("d", line);
+			}
+	}
+	}

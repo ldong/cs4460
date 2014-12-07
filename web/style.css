@@ -34,11 +34,19 @@
 }
 
 .article {
-    height: 50px;
+    height: 2px;
     border: 1px solid black;
 }
-.article p {
+.article div {
     display: none
+}
+
+.article svg {
+    display: none
+}
+
+.article:hover svg {
+    display: block;
 }
 
 div .selected {
@@ -48,12 +56,12 @@ div .selected {
 
 .article:hover {
     background-color: white;
-    height: 50px;
+    height: 65px;
 }
 
-.article:hover p{
+.article:hover div{
     display: block;
-    height: 50px;
+    height: 15px;
 }
 
 #headers {
@@ -95,4 +103,20 @@ div .selected {
 #bottom {
 	width: 1400px;
 	height: 20px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
 }
