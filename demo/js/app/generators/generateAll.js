@@ -82,7 +82,6 @@ define(['papaparse', '../model/article'], function(Papa){
             var aEdits = edits[id] || [];
             var aProtections = protections[id] || [];
             var article = new Article(id, title, category, subCategory, aLinks, aEdits, aProtections);
-            debugger;
             models.push(article);
         }
         window.models = models;
@@ -92,14 +91,6 @@ define(['papaparse', '../model/article'], function(Papa){
     }
 
     var module = {
-        data: {},
-        logics: function(){
-            console.log(window.links);
-            console.log(window.edits);
-            console.log(window.article);
-            console.log(window.protection);
-            console.log(data);
-        },
         // papa: Papa
         papa: function(){
             Papa.parse("http://localhost:8080/data/links.csv", {
@@ -147,8 +138,6 @@ define(['papaparse', '../model/article'], function(Papa){
     var init = function (options) {
         // Initialize here
         if(options){
-            module.data = options.data;
-            module.logics = options.logics;
             func = options.logics;
         }
         return module;
