@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CS4460 WikiCon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CS4460 infoVis Project, 2014 Fall">
+  <meta name="author" content="Lin Dong, Qian Shao, Valerie Reiss">
+
+    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+    <!--script src="js/lib/less-1.3.3.min.js"></script-->
+    <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <!-- JavaScript -->
+  <script data-main="js/config.js" src="js/require.js"></script>
+  <!-- <script type="text/javascript" src="js/lib/jquery.min.js"></script> -->
+  <!-- <script type="text/javascript" src="js/lib/bootstrap.min.js"></script> -->
+  <!-- <script type="text/javascript" src="js/scripts.js"></script> -->
+  <!-- <script src="http://code.highcharts.com/highcharts.js"></script> -->
+  <!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix" id='header'>
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                     <button type="button" class="navbar-toggle"
+                         data-toggle="collapse"
+                         data-target="#bs-example-navbar-collapse-1">
+                         <span class="sr-only">Toggle navigation</span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CS4460 WikiCon</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">Link</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                              <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">One more separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control">
+                        </div> <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="http://github.com/ldong/cs4460">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="row clearfix" id='main'>
+                <div class="col-md-8 column" id='main-left'>
+                    <p>main left</p>
+                    <div id="highchart1" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+                </div>
+                <div class="col-md-4 column" id='main-right'>
+                    <p>main right</p>
+                </div>
+            </div>
+            <div class="row clearfix" id='bottom'>
+                <div class="col-md-6 column" id='bottom-left'>
+                    <div id="hightchart2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    <p>bottom left</p>
+                </div>
+                <div class="col-md-6 column" id='bottom-right'>
+                    <p>bottom right</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
