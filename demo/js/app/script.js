@@ -1,18 +1,21 @@
-// requirejs(['jquery-2.1.1', 'd3', 'underscore', 'Highcharts'],
-// function ($, d3, _, Highcharts) {
-//       console.log("Run");
-// });
+define(['papaparse', 'Q', './generators/generateAll'], function(Papa, Q){
+    // var map0 = require('./app/generators/generateLinks');
+    // var map1 = require(['./app/generators/generateEdits']);
+    // var map2 = require(['./app/generators/generateArtricle']);
+    // var map3 = require(['./app/generators/generateProtection']);
+    // var map0 = require(['./app/generators/generateLinks']);
 
-define(['papaparse'], function(Papa){
-    // var csvString = '1,2,3';
-    // var results = Papa.parse(csvString);
-    // console.log(results.data);
-    Papa.parse("http://localhost:8080/data/article.csv", {
-    	download: true,
-    	complete: function(results) {
-		console.log("Remote file parsed!", results);
-	}
-    });
+    require('./app/generators/generateAll')
+    // require(['./app/generators/generateAll'])
+    // csv data are now stored in these
+    // window.links
+    // window.edits
+    // window.article
+    // window.protection
+    // console.log(window.links);
+    // console.log(window.edits);
+    // console.log(window.article);
+    // console.log(window.protection);
 });
 
 function a(){
@@ -43,4 +46,3 @@ function a(){
     var edit = new Edit(id, date, numberOfEdits);
     console.log(edit);
 }
-

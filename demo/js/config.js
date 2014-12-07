@@ -5,6 +5,7 @@ requirejs.config({
         'jquery': 'jquery-2.1.1',
         'highcharts': 'highcharts',
         'd3': 'd3',
+        'Q': 'q',
         'underscore': 'underscore',
         'coffee-script': 'coffee-script',
         'papaparse': 'papaparse',
