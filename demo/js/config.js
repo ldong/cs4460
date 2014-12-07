@@ -9,6 +9,7 @@ requirejs.config({
         'underscore': 'underscore',
         'coffee-script': 'coffee-script',
         'papaparse': 'papaparse',
+        'bootstrap': 'bootstrap.min',
         'app': '../app'
     },
     shim: {
@@ -29,4 +30,5 @@ requirejs.config({
 });
 
 // Start the main app logic
-require(['./app/script']);
+// require(['./app/script']);
+require(['./app/highcharts']);
