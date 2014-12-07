@@ -34,7 +34,7 @@
 }
 
 .article {
-    height: 2px;
+    height: 50px;
     border: 1px solid black;
 }
 .article p {
@@ -95,23 +95,4 @@ div .selected {
 #bottom {
 	width: 1400px;
 	height: 20px;
-}
-
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-
-}
-
-.x.axis path {
-    display: none;
-}
-
-.line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
 }

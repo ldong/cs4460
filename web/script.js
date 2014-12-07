@@ -142,10 +142,13 @@ function updateContent() {
     } else {
         document.getElementById("headers").innerHTML = "";
     }
-    
-    //if there is a subfocus we now need to update that
-    
-    //}
+    if(window.subFocus != "none") {
+		var elements = document.getElementById(window.subFocus).getElementsByClassName("article");
+		for(var i=0;i<elements.length;i++) {
+			e = elements[i];
+			createHoverGraph(e);
+		}
+	}
     
     
 }
@@ -192,8 +195,8 @@ function removeAll() {
 
 function createGraph(id) {
 	var text = id;
-	
-	var margin = {top: 0, right: 0, bottom: 20, left: 10},
+	document.getElementById("details").innerHTML = "";
+	var margin = {top: 0, right: 0, bottom: 20, left: 50},
 		width = 1048-margin.left - margin.right,
 		height = 50 - margin.top - margin.bottom;
 		
@@ -217,8 +220,7 @@ function createGraph(id) {
 	  .append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	var currIdData = [];
-	d3.csv("EntriesByDate.csv", function(error, data) {
-		data.forEach(function(d) {
+		edit_dates_data.forEach(function(d) {
 		if(d.ID==id) {
 			d.Date = parseDate(d.Date);
 			d.Number = +d.Number;
@@ -244,8 +246,17 @@ function createGraph(id) {
 			.attr("class", "line")
 			.attr("d", line);
 			
-	});
+	
 	
 	
 	return text + "ahoetn";
+}
+
+
+function createHoverGraph(e) {
+	//var text = id;
+	//document.getElementById("details").innerHTML = "";
+	e.innerHTML = "hi";
+	
+	
 }
