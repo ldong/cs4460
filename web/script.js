@@ -83,6 +83,7 @@ function updateContent() {
 					var selectedChild = elements[i].childNodes;
 					for (var j=1; j< selectedChild.length; j++) {
 						if(selectedChild[j].getAttribute('id') == window.subFocus) {
+							
 							selectedChild[j].style.height = (670-20*elements.length)-5*(selectedChild.length-2) + 'px';
 							//Add in the items that are a part of this category now
 							var numOfElements = 0;
@@ -105,10 +106,14 @@ function updateContent() {
 							for(var z=1;z<newElements.length;z++) {
 								window.selected = newElements[z];
 								newElements[z].onclick=function() {
-									document.getElementById("details").innerHTML=this.getAttribute("ID");
+									
+									var currententry = this.getAttribute('id');
+									console.log("The index is " + currententry + " And ID is " + this.getAttribute('id'));
+							document.getElementById("details").innerHTML = "<h2>" +  "<BR/>" + "Category: " + csv_data[currententry]["Category"] + "<BR/>" + csv_data[currententry]["Sub-Category"] + "</h2>";
 									this.className = "article selected";
 								};
 							}
+							
 						} else {
 							selectedChild[j].style.height = '5px';
 							selectedChild[j].innerHTML = '';
@@ -132,6 +137,8 @@ function updateContent() {
     
     
 }
+
+
 
 function sortData() {
     for (var i = 0; i < csv_data.length; i++) {
