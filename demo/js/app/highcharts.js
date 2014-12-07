@@ -1,5 +1,4 @@
 define(['jquery', 'highcharts'], function ($){
-    debugger;
     $('#highchart_here').highcharts({
         chart: {
             type: 'area'
