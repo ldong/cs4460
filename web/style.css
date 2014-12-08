@@ -38,6 +38,11 @@
     height: 7px;
     position: relative;
 }
+
+.graph {
+    width: 1300px;
+    height: 150px;
+}
 .article .name {
     height: 7px;
     font-size: .7em;

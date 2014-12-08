@@ -132,7 +132,6 @@ function updateContent() {
 							window.selected = newElements[z];
 							newElements[z].onclick=function() {
 							createGraph(this.getAttribute("ID"));
-							d3.select("#details").html = "hi";
 							window.currentSelectedItem = this.getAttribute("ID");
 							this.className = "article selected";
 							};
@@ -208,10 +207,10 @@ function removeAll() {
 
 function createGraph(id) {
 	var text = id;
-	document.getElementById("details").innerHTML = "";
+	document.getElementById("details").innerHTML = "<h3>"+csv_data[id]['Title']+"</h3>";
 	var margin = {top: 0, right: 0, bottom: 20, left: 30},
-		width = 1048-margin.left - margin.right,
-		height = 50 - margin.top - margin.bottom;
+		width = 1400-margin.left - margin.right,
+		height = 100 - margin.top - margin.bottom;
 		
 	var parseDate = d3.time.format("%m-%Y").parse;
 	var x = d3.time.scale()
@@ -249,7 +248,8 @@ function createGraph(id) {
 			.call(yAxis)
 		  .append("text")
 			.attr("transform", "rotate(-90)")
-			.attr("y", 6)
+			.attr("transform", "translate(0, 20)")
+			.attr("y", 4)
 			.attr("dy", ".71em")
 			.style("text-anchor", "end")
 			.text("Edits");
@@ -261,8 +261,6 @@ function createGraph(id) {
 			
 	
 	
-	
-	return text + "ahoetn";
 }
 
 
