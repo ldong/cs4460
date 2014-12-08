@@ -17,7 +17,7 @@ d3.csv("EntriesByDate.csv", function(data) {
                     });
        }
        );
-d3.csv("locks.csv", function(data) {
+d3.csv("lock.csv", function(data) {
 	data.forEach(function(d) {
 		d.Lock = parseDate(d.Lock);
 		d.Unlock = parseDate(d.Unlock);
@@ -355,9 +355,7 @@ function addColor(e) {
 				"01-2010", "02-2010", "03-2010", "04-2010", "05-2010", "06-2010", "07-2010", "08-2010", "09-2010", "10-2010", "11-2010", "12-2010",
 				"01-2011", "02-2011", "03-2011", "04-2011", "05-2011", "06-2011", "07-2011", "08-2011", "09-2011", "10-2011", "11-2011", "12-2011",
 				"01-2012", "02-2012", "03-2012", "04-2012", "05-2012", "06-2012", "07-2012", "08-2012", "09-2012", "10-2012", "11-2012", "12-2012"]
-	dates.forEach(function(d) {
-		d = parseDate(d);
-	});
+	
 	
 	//ok now we have to generate the grid
 	//1st edge case: there are no lock dates:
@@ -367,9 +365,32 @@ function addColor(e) {
 			.attr("class", "first");
 	//check each month now.
 	for(var i=0;i<dates.length;i++) {
-		
+				var retClass = "unlock"
+		for(var j=0;j<currItemDates.length;j++) {
+
+			if(currItemDates[j]['Lock'] < parseDate(dates[i]) && currItemDates[j]['Unlock'] > parseDate(dates[i])) {
+			//check class now:
+				switch(currItemDates[j]['Type']){
+					case "1":
+						retClass = "lockone";
+						break;
+					case "2":
+						retClass = "locktwo";
+						break;
+					case "3":
+						retClass = "lockthree";
+						break;
+					case "4":
+						retClass = "lockfour";
+						break;
+					case "5":
+						retClass = "lockfive";
+						break;
+				}
+			}
+			}
 		svg.append("div")
-					.attr("class", "lockone");
+					.attr("class", retClass);
 		}
 	}
 	

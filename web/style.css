@@ -75,6 +75,35 @@
     width: 11px;
     float: left;
 }
+
+.locktwo {
+    background-color: orange;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockthree {
+    background-color: blue;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockfour {
+    background-color: yellow;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockfive {
+    background-color: red;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
 .unlock {
     background-color: white;
     height: 100%;
