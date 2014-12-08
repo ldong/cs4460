@@ -25,6 +25,13 @@
 	height: 700px;
 	float: left;
 }
+.sublist {
+    border-left: 0px;
+}
+
+.sublist:hover {
+    border-left: 1px solid yellow;
+}
 
 #timeline {
     width: 1050px;

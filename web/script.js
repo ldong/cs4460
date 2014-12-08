@@ -95,7 +95,7 @@ function updateContent() {
 								.domain([0, elements.length])
 								.range(["rgba(0,0,0,.3)","rgba(0,0,0,.2)"]);
                 for (var z=0; z < subCategories.length;z++) {
-                    innerListings = innerListings + "<div id= '"+ subCategories[z][0] +"' onclick = 'updateSubFocus(&apos;"+subCategories[z][0] +"&apos;)' style='width: 1050px; background-color:"+innerColors(z) +"; float: right; font-size: 12px; overflow: auto;'>"+subCategories[z][0]+"</div>";
+                    innerListings = innerListings + "<div id= '"+ subCategories[z][0] +"' class='sublist' title=' "+subCategories[z][0]+" : "+subCategories[z][1]+" listings"+" ' onclick = 'updateSubFocus(&apos;"+subCategories[z][0] +"&apos;)' style='width: 1050px; background-color:"+innerColors(z) +"; float: right; font-size: 12px; overflow: auto;'>"+subCategories[z][0]+"</div>";
                 }
 				elements[i].innerHTML = innerListings;
 				//now fix sizing of each element:
