@@ -31,15 +31,16 @@
     height: 20px;
     background-color: white;
     float: right;
+    display: none;
 }
 
 .article {
-    height: 1px;
-    border: 1px solid black;
+    height: 7px;
     position: relative;
 }
 .article .name {
-    display: none;
+    height: 7px;
+    font-size: .7em;
     z-index: 10;
     position: relative;
 }
@@ -51,11 +52,11 @@
     background-color: white;
     z-index: 5;
     overflow-x: hidden;
-    overflow-y: none;
+    overflow-y: hidden;
 }
 
 .article .locks div {
-    height: 1px;
+    height: 7px;
     
 }
 
@@ -70,35 +71,35 @@
 }
 
 .lockone {
-    background-color: green;
+    background-color: #CCFF99;
     height: 100%;
     width: 11px;
     float: left;
 }
 
 .locktwo {
-    background-color: orange;
+    background-color: #CCCCCC;
     height: 100%;
     width: 11px;
     float: left;
 }
 
 .lockthree {
-    background-color: blue;
+    background-color: #FFCC99;
     height: 100%;
     width: 11px;
     float: left;
 }
 
 .lockfour {
-    background-color: yellow;
+    background-color: #CCFFFF;
     height: 100%;
     width: 11px;
     float: left;
 }
 
 .lockfive {
-    background-color: red;
+    background-color: #FFCCFF;
     height: 100%;
     width: 11px;
     float: left;
@@ -132,6 +133,7 @@ div .selected {
 .article:hover .name{
     display: block;
     height: 15px;
+    font-size: 1.0em;
 }
 
 #headers {
@@ -187,6 +189,6 @@ div .selected {
 
 .line {
     fill: none;
-    stroke: steelblue;
+    stroke: black;
     stroke-width: 1.5px;
 }

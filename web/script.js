@@ -2,7 +2,7 @@
 var csv_data;
 var edit_dates_data;
 var lock_dates_data;
-d3.csv("1.csv", function(data) {
+d3.csv("2.csv", function(data) {
        data.forEach(function(d) {
                     csv_data = data;
                     });
@@ -91,7 +91,9 @@ function updateContent() {
                 //now display each one similarily to before
                 var innerListings = "<div class='info' onclick=removeSub() style='float: left; width: 50px; height: 30px; bottom: 100px; position: absolute; font-size: 26px;'>"+elements[i].getAttribute('id')+"</div>";
 				
-					var innerColors = d3.scale.category20b();
+					var innerColors = d3.scale.ordinal()
+								.domain([0, elements.length])
+								.range(["rgba(0,0,0,.3)","rgba(0,0,0,.2)"]);
                 for (var z=0; z < subCategories.length;z++) {
                     innerListings = innerListings + "<div id= '"+ subCategories[z][0] +"' onclick = 'updateSubFocus(&apos;"+subCategories[z][0] +"&apos;)' style='width: 1050px; background-color:"+innerColors(z) +"; float: right; font-size: 12px; overflow: auto;'>"+subCategories[z][0]+"</div>";
                 }
@@ -154,7 +156,7 @@ function updateContent() {
     }
     if(window.subFocus != "none") {
 		var elements = document.getElementById(window.subFocus).getElementsByClassName("article");
-		for(var i=1;i<elements.length;i++) {
+		for(var i=0;i<elements.length;i++) {
 			e = elements[i];
 			createHoverGraph(e);
 			addColor(e);
