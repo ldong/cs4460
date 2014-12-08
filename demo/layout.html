@@ -13,7 +13,7 @@
     <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -26,11 +26,6 @@
 
   <!-- JavaScript -->
   <script data-main="js/config.js" src="js/require.js"></script>
-  <!-- <script type="text/javascript" src="js/lib/jquery.min.js"></script> -->
-  <!-- <script type="text/javascript" src="js/lib/bootstrap.min.js"></script> -->
-  <!-- <script type="text/javascript" src="js/scripts.js"></script> -->
-  <!-- <script src="http://code.highcharts.com/highcharts.js"></script> -->
-  <!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
 </head>
 
 <body>
@@ -53,32 +48,22 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="#">Link</a>
+                            <a href="#" id='sortMe'>Sort</a>
                         </li>
                         <li>
                             <a href="#">Link</a>
                         </li>
                         <li class="dropdown">
-                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-                              <ul class="dropdown-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Dropdown
+                                <strong class="caret"></strong>
+                            </a>
+                            <ul class="dropdown-menu">
                                 <li>
                                     <a href="#">Action</a>
                                 </li>
                                 <li>
-                                    <a href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Something else here</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Separated link</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">One more separated link</a>
+                                    <a href="#">Action2</a>
                                 </li>
                             </ul>
                         </li>
@@ -95,19 +80,46 @@
                     </ul>
                 </div>
             </nav>
-            <div class="row clearfix" id='main'>
+            <div class="row clearfix" id='main-course'>
                 <div class="col-md-8 column" id='main-left'>
-                    <p>main left</p>
-                    <div id="highchart1" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+                    <p>Main Graph</p>
+                    <!-- <div id="highchart1" style="min&#45;width: 310px; height: 600px; margin: 0 auto"></div> -->
+                    <div id='main-left-main' class='col-md-16 column'>
+                        MAIN
+                    </div>
                 </div>
                 <div class="col-md-4 column" id='main-right'>
-                    <p>main right</p>
+                    <p>Filter and Query</p>
+                    <div class="dropdown">
+                        <button id='category-value' class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                            Category
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="category" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">A</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">B</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button id='subCategory-value' class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                            SubCategory
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="subCategory" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">C</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">D</a></li>
+                        </ul>
+                    </div>
+
+
+                    <button id='query' class="btn btn-default" type="button"> Query</button>
                 </div>
             </div>
-            <div class="row clearfix" id='bottom'>
+            <div class="row clearfix" id='bottom-course'>
                 <div class="col-md-6 column" id='bottom-left'>
-                    <div id="hightchart2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                    <p>bottom left</p>
+                    <!-- <div id="hightchart2" style="min&#45;width: 310px; height: 400px; margin: 0 auto"></div> -->
+                    bottom left
                 </div>
                 <div class="col-md-6 column" id='bottom-right'>
                     <p>bottom right</p>

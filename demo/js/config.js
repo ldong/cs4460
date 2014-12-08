@@ -25,11 +25,17 @@ requirejs.config({
         },
         'papaparse' : {
             'exports': 'Papa'
+        },
+        'bootstrap': {
+            'deps': ['jquery'],
+            'exports': 'bootstrap'
         }
     }
 });
 
 // Start the main app logic
-// require(['./app/script']);
-require(['./app/highcharts']);
-require(['./app/highcharts2']);
+require(['./app/script']);
+// require(['./app/highcharts']);
+// require(['./app/highcharts2']);
+// require(['./app/valerie']);
+// require(['./app/dong']);

@@ -1,4 +1,4 @@
-define(['papaparse', '../model/article'], function(Papa){
+define(['papaparse','underscore', '../model/article'], function(Papa, _){
     var func = function(str){
         console.log("HELLO WORLD "+str);
     };
@@ -15,7 +15,7 @@ define(['papaparse', '../model/article'], function(Papa){
             return index;
         }
 
-        console.log('Start parse');
+        // console.log('Start parse');
         var Article = require('./app/model/article');
         var links = {};
         for(var i=1; i<window.links.length; ++i){
@@ -32,8 +32,8 @@ define(['papaparse', '../model/article'], function(Papa){
                 // console.log('index ' +i);
             }
         }
-        console.log('links');
-        console.log(links);
+        // console.log('links');
+        // console.log(links);
 
         var edits = {};
         for(var i=1; i<window.edits.length; ++i){
@@ -50,8 +50,8 @@ define(['papaparse', '../model/article'], function(Papa){
             arr[index] = numberOfEdits || 0;
             edits[id] = arr;
         }
-        console.log('edits');
-        console.log(edits);
+        // console.log('edits');
+        // console.log(edits);
 
         var protections = {};
         for(var i=1; i<window.protection.length; ++i){
@@ -68,9 +68,11 @@ define(['papaparse', '../model/article'], function(Papa){
             }
             protections[id] = arr;
         }
-        console.log('protections');
-        console.log(protections);
+        // console.log('protections');
+        // console.log(protections);
 
+
+        var categoryHash = {};
         var models = []; // to be returned
         for(var i=1; i<window.article.length; ++i){
             var id = window.article[i][0] || '0';
@@ -83,10 +85,22 @@ define(['papaparse', '../model/article'], function(Papa){
             var aProtections = protections[id] || [];
             var article = new Article(id, title, category, subCategory, aLinks, aEdits, aProtections);
             models.push(article);
+
+            var subCategoryList = [];
+            if(categoryHash[category]){
+                subCategoryList = categoryHash[category];
+                if(!_.contains(subCategoryList, subCategory)){
+                    subCategoryList.push(subCategory);
+                }
+            } else {
+                subCategoryList.push(subCategory);
+                categoryHash[category]= subCategoryList;
+            }
         }
         window.models = models;
-        console.log('models');
-        console.log(models);
+        window.category = categoryHash;
+        // console.log('models');
+        // console.log(models);
         console.log('End parse');
     }
 
