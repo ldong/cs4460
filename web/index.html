@@ -1,49 +1,54 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="script.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-</head>
-<body>
-    <!-- Main box div - everything goes in this -->
-    <h1> Controversy in Wikipedia </h1>
-    <div id="main">
-        <!-- The listings - contains all of the elements as well as the categories on the left of them -->
-        <!-- The timeline is also contained here -->
-        <div id="listings">
-            <div id="left">
-                <!-- Header elements: shows what section of the data we are on. Goes to the left of listings -->
-                <div id="headers">
-                    <h3 class ="info"> Header of elements </h3>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="script.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <!-- Main box div - everything goes in this -->
+        <h1> Controversy in Wikipedia </h1>
+        <div id="main">
+            <!-- The listings - contains all of the elements as well as the categories on the left of them -->
+            <!-- The timeline is also contained here -->
+            <div id="listings">
+                <div id="left">
+                    <!-- Header elements: shows what section of the data we are on. Goes to the left of listings -->
+                    <div id="headers">
+                        <h3 class ="info"> Header of elements </h3>
+                    </div>
+                    <!-- Actual listings of all data as bars -->
+                    <div id="content">
+                        <p> Each listing will go here. </p>
+                    </div>
+                    <!-- controller for timeline -->
+                    <div id="timeline-control">
+                        Timeline control - change what portion of the timeline is shown here.
+                    </div>
                 </div>
-                <!-- Actual listings of all data as bars -->
-                <div id="content">
-                    <p> Each listing will go here. </p>
-                </div>
-                <!-- controller for timeline -->
-                <div id="timeline-control">
-                    Timeline control - change what portion of the timeline is shown here.
-                </div>
-            </div>
-            <!-- Sorting panel - goes above listings and contains information on how to sort the stuff -->
-            <div id="sorting">
-                <h3> Filters </h3>
-                <p> Sort by: </p>
-                <input type="radio" name="sort-type" value="Alphabetical">Alphabetical</br>
-                <input type="radio" name="sort-type" value="Chronological">Chronological</br>
+                <!-- Sorting panel - goes above listings and contains information on how to sort the stuff -->
+                <div id="sorting">
+                    <h3> Filters </h3>
+                    <p> Sort by: </p>
+                    <input type="radio" name="sort-type" value="Alphabetical">Alphabetical</br>
+                    <input type="radio" name="sort-type" value="Chronological">Chronological</br>
 
-                <p> Timeline filters: </p>
-                <input type="checkbox" name="show" value="locked-between">Locked between dates</br>
-                <input type="checkbox" name="show" value="unlocked-between">Unlock between dates</br>
-                <input type="checkbox" name="show" value="lock-between">Lock between dates</br>
-                <p> Search: </p>
+                    <p> Timeline filters: </p>
+                    <input type="checkbox" name="show" value="locked-between">Locked between dates</br>
+                    <input type="checkbox" name="show" value="unlocked-between">Unlock between dates</br>
+                    <input type="checkbox" name="show" value="lock-between">Lock between dates</br>
+                    <p> Search: </p>
+                </div>
+            </div>
+            <!-- The details pane - contains the details for a specific listing -->
+            <div id="details">
+                <h2> Select an entry to see details </h2>
             </div>
         </div>
-        <!-- The details pane - contains the details for a specific listing -->
-        <div id="details">
-            <h2> Select an entry to see details </h2>
+        <div id="bottom">
         </div>
-    </div>
-    <div id="bottom">
-    </div>
-</body>
+    </body>
+</html>
