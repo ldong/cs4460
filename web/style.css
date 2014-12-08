@@ -1,0 +1,206 @@
+#main {
+	background-color: red;
+	width: 1400px;
+	height: 850px;
+}
+
+#sorting {
+	background-color: #E0E0E0;
+	width: 194px;
+	height: 696px;
+	float: right;
+	padding: 2px;
+}
+
+#listings {
+	background-color: green;
+	width: 1398px;
+	height: 700px;
+	border: 1px solid black;
+}
+
+#left {
+	background-color: aqua;
+	width: 1200px;
+	height: 700px;
+	float: left;
+}
+.sublist {
+    border-left: 0px;
+}
+
+.sublist:hover {
+    border-left: 1px solid yellow;
+}
+
+#timeline {
+    width: 1050px;
+    height: 20px;
+    background-color: white;
+    float: right;
+    display: none;
+}
+
+.article {
+    height: 7px;
+    position: relative;
+}
+
+.graph {
+    width: 1300px;
+    height: 150px;
+}
+.article .name {
+    height: 7px;
+    font-size: .7em;
+    z-index: 10;
+    position: relative;
+}
+
+.article .locks {
+    position: absolute;
+    height: 100%;
+    width: 1048px;
+    background-color: white;
+    z-index: 5;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.article .locks div {
+    height: 7px;
+    
+}
+
+.article:hover .locks div {
+    height: 70px;
+}
+
+.article svg {
+    display: none;
+    position: relative;
+    z-index: 10;
+}
+
+.lockone {
+    background-color: #CCFF99;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.locktwo {
+    background-color: #CCCCCC;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockthree {
+    background-color: #FFCC99;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockfour {
+    background-color: #CCFFFF;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockfive {
+    background-color: #FFCCFF;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.unlock {
+    background-color: white;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+.first {
+    width: 30px;
+    height: 100%;
+    float: left;
+}
+
+.article:hover svg {
+    display: block;
+}
+
+div .selected {
+    border: green;
+    height: 50px;
+}
+
+.article:hover {
+    height: 65px;
+}
+
+.article:hover .name{
+    display: block;
+    height: 15px;
+    font-size: 1.0em;
+}
+
+#headers {
+	background-color: #F8F8F8;
+	width: 98px;
+	height: 698px;
+	float: left;
+	border: 1px solid #E0E0E0;
+	
+}
+.info {
+	-moz-transform: rotate(-90deg);
+	
+}
+
+#content {
+	background-color: #F8F8F8;
+	width: 1100px;
+	height: 670px;
+	float: right;
+}
+
+#timeline-control {
+	background-color: white;
+	width: 1100px;
+	height: 30px;
+	float: right;
+}
+
+#details {
+	background-color: #F8F8F8;
+	width: 1398px;
+	height: 150px;
+	border: 1px solid black;
+	border-top: 0px;
+	float: left;
+	}
+	
+#bottom {
+	width: 1400px;
+	height: 20px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5px;
+}
