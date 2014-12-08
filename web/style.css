@@ -36,6 +36,7 @@
 .article {
     height: 1px;
     border: 1px solid black;
+    position: relative;
 }
 .article .name {
     display: none;
@@ -45,13 +46,20 @@
 
 .article .locks {
     position: absolute;
-    height: 1px;
+    height: 100%;
     width: 1048px;
     background-color: white;
     z-index: 5;
+    overflow-x: hidden;
+    overflow-y: none;
 }
 
-.article:hover .locks {
+.article .locks div {
+    height: 1px;
+    
+}
+
+.article:hover .locks div {
     height: 70px;
 }
 
@@ -59,6 +67,24 @@
     display: none;
     position: relative;
     z-index: 10;
+}
+
+.lockone {
+    background-color: green;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+.unlock {
+    background-color: white;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+.first {
+    width: 30px;
+    height: 100%;
+    float: left;
 }
 
 .article:hover svg {

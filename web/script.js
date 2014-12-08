@@ -1,6 +1,7 @@
 //@Author Valerie Reiss
 var csv_data;
 var edit_dates_data;
+var lock_dates_data;
 d3.csv("1.csv", function(data) {
        data.forEach(function(d) {
                     csv_data = data;
@@ -16,6 +17,13 @@ d3.csv("EntriesByDate.csv", function(data) {
                     });
        }
        );
+d3.csv("locks.csv", function(data) {
+	data.forEach(function(d) {
+		d.Lock = parseDate(d.Lock);
+		d.Unlock = parseDate(d.Unlock);
+		lock_dates_data = data;
+	});
+});
 var csv_data_category_nums = [];
 //this section keeps track of the number of entreis in a category
 
@@ -146,9 +154,10 @@ function updateContent() {
     }
     if(window.subFocus != "none") {
 		var elements = document.getElementById(window.subFocus).getElementsByClassName("article");
-		for(var i=0;i<elements.length;i++) {
+		for(var i=1;i<elements.length;i++) {
 			e = elements[i];
 			createHoverGraph(e);
+			addColor(e);
 		}
 	}
     
@@ -198,7 +207,7 @@ function removeAll() {
 function createGraph(id) {
 	var text = id;
 	document.getElementById("details").innerHTML = "";
-	var margin = {top: 0, right: 0, bottom: 20, left: 50},
+	var margin = {top: 0, right: 0, bottom: 20, left: 30},
 		width = 1048-margin.left - margin.right,
 		height = 50 - margin.top - margin.bottom;
 		
@@ -261,7 +270,7 @@ function createHoverGraph(e) {
 	if (e.getAttribute('id') != "timeline") {
 	e.innerHTML = "<div class='locks'></div><div class='name'>"+csv_data[e.getAttribute('id')]['Title']+"</div>";
 	
-	var margin = {top: 0, right: 0, bottom: 20, left: 50},
+	var margin = {top: 0, right: 0, bottom: 20, left: 30},
 		width = 1048-margin.left - margin.right,
 		height = 50 - margin.top - margin.bottom;
 	var x = d3.time.scale()
@@ -317,3 +326,51 @@ function createHoverGraph(e) {
 			}
 	}
 	}
+
+//Adds the background color based on when an entry was locked/unlocked through edit protection.
+//Renders it as bars inside the locks div
+function addColor(e) {
+	var x = d3.time.scale()
+		.range([0,1048]);
+	var y = d3.scale
+	var svg = d3.select(e.getElementsByClassName('locks')[0]).append("div")
+		.attr("width", "1048px")
+		.attr("height", "100%");
+	  
+	x.domain(d3.extent(edit_dates_data, function(d) {return d.Date;}));
+	
+	  //get all lock/unlock dates for this specific element - in demo it will be one
+	var currItemDates = [];
+	lock_dates_data.forEach(function(d) {
+		if(d.ID == e.getAttribute("id")) {
+			currItemDates.push(d);
+		}
+	} );
+	//date array for image:
+	var dates = ["01-2005", "02-2005", "03-2005", "04-2005", "05-2005", "06-2005", "07-2005", "08-2005", "09-2005", "10-2005", "11-2005", "12-2005",
+				"01-2006", "02-2006", "03-2006", "04-2006", "05-2006", "06-2006", "07-2006", "08-2006", "09-2006", "10-2006", "11-2006", "12-2006",
+				"01-2007", "02-2007", "03-2007", "04-2007", "05-2007", "06-2007", "07-2007", "08-2007", "09-2007", "10-2007", "11-2007", "12-2007",
+				"01-2008", "02-2008", "03-2008", "04-2008", "05-2008", "06-2008", "07-2008", "08-2008", "09-2008", "10-2008", "11-2008", "12-2008",
+				"01-2009", "02-2009", "03-2009", "04-2009", "05-2009", "06-2009", "07-2009", "08-2009", "09-2009", "10-2009", "11-2009", "12-2009",
+				"01-2010", "02-2010", "03-2010", "04-2010", "05-2010", "06-2010", "07-2010", "08-2010", "09-2010", "10-2010", "11-2010", "12-2010",
+				"01-2011", "02-2011", "03-2011", "04-2011", "05-2011", "06-2011", "07-2011", "08-2011", "09-2011", "10-2011", "11-2011", "12-2011",
+				"01-2012", "02-2012", "03-2012", "04-2012", "05-2012", "06-2012", "07-2012", "08-2012", "09-2012", "10-2012", "11-2012", "12-2012"]
+	dates.forEach(function(d) {
+		d = parseDate(d);
+	});
+	
+	//ok now we have to generate the grid
+	//1st edge case: there are no lock dates:
+	if(currItemDates != 0) {
+	//add left chunk:
+		svg.append("div")
+			.attr("class", "first");
+	//check each month now.
+	for(var i=0;i<dates.length;i++) {
+		
+		svg.append("div")
+					.attr("class", "lockone");
+		}
+	}
+	
+}
