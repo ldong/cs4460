@@ -25,20 +25,112 @@
 	height: 700px;
 	float: left;
 }
+.sublist {
+    border-left: 0px;
+}
+
+.sublist:hover {
+    border-left: 1px solid yellow;
+}
 
 #timeline {
     width: 1050px;
     height: 20px;
     background-color: white;
     float: right;
+    display: none;
 }
 
 .article {
-    height: 2px;
-    border: 1px solid black;
+    height: 7px;
+    position: relative;
 }
-.article p {
-    display: none
+
+.graph {
+    width: 1300px;
+    height: 150px;
+}
+.article .name {
+    height: 7px;
+    font-size: .7em;
+    z-index: 10;
+    position: relative;
+}
+
+.article .locks {
+    position: absolute;
+    height: 100%;
+    width: 1048px;
+    background-color: white;
+    z-index: 5;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.article .locks div {
+    height: 7px;
+    
+}
+
+.article:hover .locks div {
+    height: 70px;
+}
+
+.article svg {
+    display: none;
+    position: relative;
+    z-index: 10;
+}
+
+.lockone {
+    background-color: #CCFF99;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.locktwo {
+    background-color: #CCCCCC;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockthree {
+    background-color: #FFCC99;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockfour {
+    background-color: #CCFFFF;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.lockfive {
+    background-color: #FFCCFF;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+
+.unlock {
+    background-color: white;
+    height: 100%;
+    width: 11px;
+    float: left;
+}
+.first {
+    width: 30px;
+    height: 100%;
+    float: left;
+}
+
+.article:hover svg {
+    display: block;
 }
 
 div .selected {
@@ -47,13 +139,13 @@ div .selected {
 }
 
 .article:hover {
-    background-color: white;
-    height: 50px;
+    height: 65px;
 }
 
-.article:hover p{
+.article:hover .name{
     display: block;
-    height: 50px;
+    height: 15px;
+    font-size: 1.0em;
 }
 
 #headers {
@@ -95,4 +187,20 @@ div .selected {
 #bottom {
 	width: 1400px;
 	height: 20px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5px;
 }
